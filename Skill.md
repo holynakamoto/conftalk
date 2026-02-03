@@ -1,5 +1,5 @@
 ---
-name: TalkPrep AI
+name: talkprep-ai
 description: Helps prepare conference talks from ideation to rehearsal, generating outlines, scripts, slides, and Q&A preparation materials.
 ---
 
