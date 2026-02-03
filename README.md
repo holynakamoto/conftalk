@@ -12,7 +12,47 @@ TalkPrep AI is an AI-powered assistant that helps professionals prepare outstand
 - **Slide Generation** - Produce slide decks with export to multiple formats
 - **Rehearsal Simulation** - Practice with Q&A preparation and timing feedback
 
-## Installation
+## Using as a Claude Skill
+
+### Installation
+
+1. Download or clone this repository
+2. Zip the folder (ensure the folder is at the root of the zip, not files directly)
+3. Upload to Claude via Settings > Skills > Add Skill
+
+### Required Files
+
+- `Skill.md` - Main skill definition with YAML frontmatter
+- `REFERENCE.md` - Additional reference documentation
+- `scripts/talkprep.py` - Python utilities for calculations
+
+### Skill Structure
+
+```
+talkprep-ai/
+├── Skill.md           # Main skill definition (required)
+├── REFERENCE.md       # Reference documentation
+├── scripts/
+│   └── talkprep.py    # Python utility scripts
+└── src/               # TypeScript SDK (optional)
+```
+
+### Example Prompts
+
+Once enabled, try these prompts with Claude:
+
+- "Help me prepare a 30-minute talk on GraphQL for a tech conference"
+- "Create an outline for my keynote about the future of AI"
+- "I need to give a 5-minute lightning talk on Docker - help me prepare"
+- "Generate Q&A preparation for my machine learning workshop"
+
+---
+
+## TypeScript SDK
+
+This package also includes a TypeScript SDK for programmatic use.
+
+### Installation
 
 ```bash
 npm install
@@ -201,22 +241,67 @@ Standalone HTML presentation with basic styling and print support.
 ## Project Structure
 
 ```
-src/
-├── index.ts              # Main entry point and TalkPrepSkill class
-├── types/
-│   └── index.ts          # TypeScript type definitions
-├── schemas/
-│   └── validation.ts     # Zod validation schemas
-├── prompts/
-│   └── system-prompt.ts  # Claude system prompts
-├── modules/
-│   ├── ideation.ts       # Topic ideation and research
-│   ├── outline.ts        # Outline generation
-│   ├── content.ts        # Content/script creation
-│   ├── slides.ts         # Slide generation and export
-│   └── rehearsal.ts      # Rehearsal and Q&A preparation
-└── templates/
-    └── index.ts          # Talk type templates
+talkprep-ai/
+├── Skill.md              # Claude Skill definition
+├── REFERENCE.md          # Reference documentation
+├── scripts/
+│   └── talkprep.py       # Python utility scripts
+├── src/                  # TypeScript SDK
+│   ├── index.ts          # Main entry point and TalkPrepSkill class
+│   ├── index.test.ts     # Test suite
+│   ├── types/
+│   │   └── index.ts      # TypeScript type definitions
+│   ├── schemas/
+│   │   └── validation.ts # Zod validation schemas
+│   ├── prompts/
+│   │   └── system-prompt.ts  # Claude system prompts
+│   ├── modules/
+│   │   ├── ideation.ts   # Topic ideation and research
+│   │   ├── outline.ts    # Outline generation
+│   │   ├── content.ts    # Content/script creation
+│   │   ├── slides.ts     # Slide generation and export
+│   │   └── rehearsal.ts  # Rehearsal and Q&A preparation
+│   └── templates/
+│       └── index.ts      # Talk type templates
+├── package.json          # Node.js dependencies
+├── tsconfig.json         # TypeScript configuration
+└── skill.yaml            # Skill metadata (alternative format)
+```
+
+## Python Scripts
+
+The `scripts/talkprep.py` file provides utility functions for:
+
+```python
+from scripts.talkprep import (
+    calculate_section_timing,
+    estimate_word_count,
+    estimate_slide_count,
+    create_outline_template,
+    generate_timing_cues,
+    export_outline_markdown,
+    export_slides_html,
+)
+
+# Calculate timing for a 30-minute technical talk
+timing = calculate_section_timing(30, "technical_deep_dive")
+# {'intro': 3, 'main': 18, 'conclusion': 3, 'qa': 6}
+
+# Estimate word count needed
+words = estimate_word_count(30, "conversational")
+# 4500
+
+# Create an outline template
+outline = create_outline_template(
+    title="My Talk",
+    duration=30,
+    audience="technical",
+    talk_type="technical_deep_dive",
+    key_concepts=["Concept 1", "Concept 2", "Concept 3"]
+)
+
+# Generate timing cues for rehearsal
+cues = generate_timing_cues(outline)
 ```
 
 ## Using with Claude
