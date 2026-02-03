@@ -1,8 +1,6 @@
 ---
 name: TalkPrep AI
 description: Helps prepare conference talks from ideation to rehearsal, generating outlines, scripts, slides, and Q&A preparation materials.
-dependencies:
-  - python>=3.8
 ---
 
 # TalkPrep AI
