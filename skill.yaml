@@ -1,0 +1,133 @@
+# TalkPrep AI - Claude Skill Definition
+# Version: 1.0.0
+
+metadata:
+  name: "TalkPrep AI"
+  version: "1.0.0"
+  description: "An AI-powered assistant for preparing conference talks, from ideation to rehearsal"
+  author: "TalkPrep Team"
+  category: "Productivity"
+  tags:
+    - conference
+    - presentation
+    - public-speaking
+    - content-creation
+    - slides
+  icon: "microphone"
+
+capabilities:
+  - topic_ideation
+  - research_synthesis
+  - outline_generation
+  - content_creation
+  - slide_generation
+  - rehearsal_simulation
+  - qa_preparation
+
+inputs:
+  topic:
+    type: string
+    description: "The main topic or theme of the talk"
+    required: true
+
+  audience:
+    type: enum
+    description: "The target audience type"
+    options:
+      - technical
+      - academic
+      - business
+      - general
+    default: general
+
+  duration:
+    type: integer
+    description: "Talk duration in minutes"
+    default: 30
+    min: 5
+    max: 120
+
+  expertise_level:
+    type: enum
+    description: "Speaker's expertise level on the topic"
+    options:
+      - beginner
+      - intermediate
+      - expert
+    default: intermediate
+
+  talk_type:
+    type: enum
+    description: "Type of presentation"
+    options:
+      - keynote
+      - technical_deep_dive
+      - workshop
+      - lightning_talk
+      - panel_discussion
+    default: technical_deep_dive
+
+  tone:
+    type: enum
+    description: "Desired tone of the presentation"
+    options:
+      - formal
+      - conversational
+      - inspirational
+      - educational
+    default: conversational
+
+outputs:
+  outline:
+    type: structured_outline
+    description: "Hierarchical talk outline with timing"
+
+  script:
+    type: markdown
+    description: "Full speaker script with notes"
+
+  slides:
+    type: slide_deck
+    formats:
+      - markdown
+      - json
+      - html
+    description: "Generated slide content"
+
+  qa_prep:
+    type: qa_pairs
+    description: "Anticipated questions and suggested answers"
+
+  rehearsal_feedback:
+    type: feedback_report
+    description: "Timing and content feedback from rehearsal"
+
+workflow:
+  steps:
+    - id: ideation
+      name: "Topic Ideation & Research"
+      description: "Refine topic and gather research materials"
+
+    - id: outline
+      name: "Outline Generation"
+      description: "Create structured talk outline with timing"
+
+    - id: content
+      name: "Content Creation"
+      description: "Generate scripts, slides, and speaker notes"
+
+    - id: export
+      name: "Slide Export"
+      description: "Export slides to desired format"
+
+    - id: rehearsal
+      name: "Rehearsal Simulation"
+      description: "Practice with Q&A simulation and timing feedback"
+
+settings:
+  max_slides: 50
+  default_slide_duration_seconds: 60
+  enable_research: true
+  enable_citations: true
+  plagiarism_check: true
+  accessibility_mode: true

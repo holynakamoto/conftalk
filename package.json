@@ -1,0 +1,44 @@
+{
+  "name": "talkprep-ai",
+  "version": "1.0.0",
+  "description": "TalkPrep AI - A Claude Skill for conference talk preparation",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "lint": "eslint src --ext .ts",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "validate": "npm run lint && npm run test",
+    "export:skill": "node dist/cli/export-skill.js"
+  },
+  "keywords": [
+    "claude",
+    "skill",
+    "conference",
+    "presentation",
+    "talk-preparation",
+    "ai-assistant"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.11.0",
+    "@typescript-eslint/eslint-plugin": "^6.19.0",
+    "@typescript-eslint/parser": "^6.19.0",
+    "eslint": "^8.56.0",
+    "jest": "^29.7.0",
+    "prettier": "^3.2.4",
+    "ts-jest": "^29.1.2",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "yaml": "^2.3.4",
+    "zod": "^3.22.4"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
